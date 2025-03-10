@@ -1,0 +1,158 @@
+---
+title: "Inference Review"
+subtitle: "MKTG 411 Marketing Analytics"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: style.css
+---
+
+## Review of the Inference Workflow
+
+Scenario: Opening a Successful Soda Shop
+
+Imagine you are an entrepreneur who wants to open a successful soda shop and need to determine what factors drive daily soda sales (Y). Let's go through an example of using the inferential modeling framework.
+
+## Consider the data-generating process.
+
+$Y$ (Target Variable): Daily soda sales.
+
+$X_p$ (Predictor Variables): Factors that may influence sales:
+
+- Price of soda ($X_1$)
+- Store location (urban vs. suburban) ($X_2$)
+- Time of day (morning vs. afternoon vs. evening) ($X_3$)
+- Weather conditions (temperature, rain, etc.) ($X_4$)
+- Marketing efforts (social media ads, loyalty programs, discounts) ($X_5$)
+- Competitor presence nearby ($X_6$)
+
+**Key Question**: Can I collect data on these variables? If yes, how? (Point-of-sale data, surveys, web traffic, weather reports, etc.)
+
+## Build a Model for Soda Sales ($Y$)
+
+Since daily soda sales are a continuous variable, we choose a linear regression model:
+
+$Y_i = \beta_0 + \beta_1SodaPrice_i + ... + \beta_6CompetitorPresence_i + \epsilon_i$
+
+If we were modeling whether a given day was a "top-selling" day or not, we would use a logistic regression model.
+
+## Simulate Data Based on Realistic Parameter Values
+
+Assume plausible values for each coefficient:
+
+- A higher price ($X_1$) leads to lower sales (negative coefficient).
+- Being in an urban area ($X_2$) leads to higher sales.
+- Morning sales ($X_3$) are higher than evening sales.
+- Bad weather ($X_4$) may decrease sales.
+- Marketing promotions ($X_5$) increase sales.
+- Competitor presence ($X_6$) decreases sales.
+
+Generate simulated data and make sure the model estimates match expectations. DO THE CONFIDENCE INTERVALS OVERLAP WITH THE COEFFICIENT VALUES WE CHOSE? --> **recovery**.
+
+## Exploratory Analysis and Data Wrangling
+
+OBTAIN YOUR REAL DATA!
+
+- Ensure the data set is in a tidy format (each row = one day, each column = one variable).
+- Handle missing values (e.g., missing weather data).
+- Remove incorrect values (e.g., a negative sales amount).
+- Create visualizations, compute summary statistics of interest, etc. Can you uncover preliminary evidence that suggests that your $X$ variables affect $Y$?
+
+GET TO KNOW YOUR DATA.
+
+## Split the Data Into Training and Testing Sets
+
+Why?
+
+## Exam Prep Analogy
+
+Imagine you're preparing for a big exam. You have a textbook full of practice problems and want to ensure you’re truly ready for the test. Here's how you approach it:
+
+You start by working through practice problems in your textbook. You check your answers, learn from mistakes, and improve your problem-solving skills.
+
+You re-solve the practice problems and your score improves dramatically. You feel excited and ready to take the exam!
+
+## Test Day Woes...
+
+You take the exam in the testing center, and you get a 50%! **F**!
+
+What happened?
+
+## Exam Prep Analogy
+
+- If you (the model) memorize patterns of the training data, it will result in poor performance on the testing data!
+  
+- Your goal should be to *learn the underlying principles and techniques* so you can apply them to a new set of problems!
+
+- The same thing goes for statistical models - we want them to learn the underlying relationships from the data generating process, NOT memorize patterns in the training data!
+  
+## Wait...Once I take the Exam isn't that too Late?
+
+We "create" test data by reserving some of our training data. (You can reserve a subset of practice problems for a "final evaluation" prior to the exam.)
+  
+**We evaluate models on test data to ensure that we are getting the model that is most likely to perform well on unseen data**.
+
+## Back to the Inference Workflow...
+
+## Pre-process the Training Data
+
+- Transform variables if needed (e.g., log-transform sales, price if necessary).
+- Convert categorical variables (e.g., location, time of day) into dummy variables.
+
+You can *sort of* think of this as defining the type of questions that will be on the exam...*e.g.*, are we giving the model multiple-choice, fill-in-the-blank, open response, or a mix of these. You are defining the format of the exam.
+
+## Fit the Model to the Training Data
+
+Estimate the coefficients $\beta_0, ..., \beta_p$.
+
+## Evaluate Parameter Estimates
+
+Check if the coefficients are statistically significant.
+
+See if the estimates match expectations!
+
+- Is the price coefficient negative?
+- Does marketing positively impact sales?
+
+## Note on Inferential Modeling
+
+We *never* drop variables from our model just because they aren't statistically significant.
+
+We let our theories about the data-generating process drive decisions about what variables are included.
+
+Example: I regress sales on price and price is not statistically significant.
+
+- statistically insignificant variables may be correlated with one of our other X's and our Y --> omitted variable bias.
+- just because it's not statistically significant, doesn't mean it's not part of the data generating process. Our data/model just can't provide evidence that it *is*.
+
+## Pre-Process the Test Data
+
+This pre-processing should be *exactly* the same as it was for the training data.
+
+Why? Would you expect to perform well on an exam with open-ended questions when you practiced on multiple choice responses?
+
+## Evaluate Predictive Accuracy on the Test Data
+
+- Use RMSE to evaluate model performance. This would be accuracy if we were using a logistic regression.
+- What if we only have one model? Use the average of $Y$ as your **baseline** prediction. Does your model improve accuracy over that baseline?
+
+## Generate Counterfactual Scenarios
+
+Evaluate potential decisions.
+
+- What happens if we reduce the price by 10%?
+- What if we run a marketing campaign on social media?
+- What if we made these efforts when the weather was sunny vs. rainy?
+
+## Make Managerial Recommendations
+
+- If price elasticity is high, consider pricing strategies carefully.
+- If weather significantly impacts sales, adjust accordingly
+  - alter store hours
+  - offer delivery or other promotions on rainy days
+- If marketing has a strong impact, increase your spend on high-return platforms or channels
+
+## That's It!
+
+Go start those projects!
+ 
