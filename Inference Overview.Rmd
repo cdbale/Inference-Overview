@@ -125,6 +125,8 @@ Example: I regress sales on price and price is not statistically significant.
 - statistically insignificant variables may be correlated with one of our other X's and our Y --> omitted variable bias.
 - just because it's not statistically significant, doesn't mean it's not part of the data generating process. Our data/model just can't provide evidence that it *is*.
 
+However...we can use the quality of test data predictions as a deciding factor if variable inclusion is in question.
+
 ## Pre-Process the Test Data
 
 This pre-processing should be *exactly* the same as it was for the training data.
